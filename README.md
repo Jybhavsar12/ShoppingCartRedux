@@ -15,7 +15,9 @@ A React Native shopping cart application demonstrating Redux state management wi
 
 | Product List | Add to Cart | Shopping Cart | Updated Cart |
 |--------------|-------------|---------------|--------------|
-| ![Product List](./screenshots/product-list.png) | ![Add to Cart](./screenshots/product-added.png) | ![Cart](./screenshots/cart-screen.png) | ![Updated Cart](./screenshots/cart-updated.png) |
+|![answer 2025-11-12 at 8 23 35 PM](https://github.com/user-attachments/assets/ffb71f12-d5c3-4688-a59b-994150535dec)|![answer 2025-11-12 at 8 23 42 PM](https://github.com/user-attachments/assets/b4dff3c5-1343-4bb8-9f0d-f251d0ee94a4)| ![answer 2025-11-12 at 8 24 16 PM](https://github.com/user-attachments/assets/7b54b1ca-d056-473b-9bff-c3d4d3a807a1)
+ | ![answer 2025-11-12 at 8 23 57 PM](https://github.com/user-attachments/assets/f3535c14-b043-49d2-a718-be793ab02e13)|
+
 
 ## Tech Stack
 
