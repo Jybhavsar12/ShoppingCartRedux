@@ -1,18 +1,16 @@
-/**
- * Main App Component
- * Sets up Redux Provider and navigation
- */
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
+import 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
 import CartScreen from './src/screens/CartScreen';
 import ProductListScreen from './src/screens/ProductListScreen';
 import { store } from './src/store';
+// ... other imports
 
 const Stack = createStackNavigator();
 
-function App() {
+export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
@@ -43,5 +41,3 @@ function App() {
     </Provider>
   );
 }
-
-export default App;

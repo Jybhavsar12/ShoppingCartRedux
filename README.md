@@ -1,97 +1,192 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Redux Shopping Cart - React Native
 
-# Getting Started
+A React Native shopping cart application demonstrating Redux state management with product listing, cart functionality, and navigation.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Features
 
-## Step 1: Start Metro
+- 📱 **Product Listing**: Browse available products with images and prices
+- 🛒 **Add to Cart**: Add products to shopping cart with quantity management
+- 🔄 **State Management**: Redux Toolkit for centralized state management
+- 🧭 **Navigation**: React Navigation for seamless screen transitions
+- 💰 **Cart Management**: View, update quantities, and calculate totals
+- 🎨 **Modern UI**: Clean and responsive design
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Screenshots
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+| Product List | Add to Cart | Shopping Cart | Updated Cart |
+|--------------|-------------|---------------|--------------|
+| ![Product List](./screenshots/product-list.png) | ![Add to Cart](./screenshots/product-added.png) | ![Cart](./screenshots/cart-screen.png) | ![Updated Cart](./screenshots/cart-updated.png) |
 
-```sh
-# Using npm
-npm start
+## Tech Stack
 
-# OR using Yarn
-yarn start
+- **React Native** - Mobile app framework
+- **Redux Toolkit** - State management
+- **React Navigation** - Navigation library
+- **React Native Screens** - Native navigation primitives
+- **Metro** - JavaScript bundler
+
+## Project Structure
+
+```
+ShoppingCartRedux/
+├── src/
+│   ├── components/
+│   │   └── ProductCard.js
+│   ├── screens/
+│   │   ├── ProductListScreen.js
+│   │   └── CartScreen.js
+│   ├── store/
+│   │   ├── index.js
+│   │   ├── cartSlice.js
+│   │   └── productsSlice.js
+│   └── data/
+│       └── products.js
+├── screenshots/
+├── App.js
+└── README.md
 ```
 
-## Step 2: Build and run your app
+## Getting Started
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+### Prerequisites
 
-### Android
+- Node.js (>= 14)
+- React Native CLI
+- iOS Simulator or Android Emulator
+- CocoaPods (for iOS)
 
-```sh
-# Using npm
-npm run android
+### Installation
 
-# OR using Yarn
-yarn android
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd ShoppingCartRedux
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Install iOS dependencies** (iOS only)
+   ```bash
+   cd ios && pod install && cd ..
+   ```
+
+4. **Start Metro bundler**
+   ```bash
+   npm start
+   ```
+
+5. **Run the app**
+   ```bash
+   # For iOS
+   npm run ios
+   
+   # For Android
+   npm run android
+   ```
+
+## Redux Architecture
+
+### Store Structure
+```javascript
+{
+  products: {
+    items: [],
+    loading: false,
+    error: null
+  },
+  cart: {
+    items: [],
+    total: 0
+  }
+}
 ```
 
-### iOS
+### Key Actions
+- `fetchProducts` - Load product data
+- `addToCart` - Add product to cart
+- `removeFromCart` - Remove product from cart
+- `updateQuantity` - Update item quantity
+- `clearCart` - Clear all cart items
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+## Development
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+### Available Scripts
 
-```sh
-bundle install
+- `npm start` - Start Metro bundler
+- `npm run ios` - Run on iOS simulator
+- `npm run android` - Run on Android emulator
+- `npm run lint` - Run ESLint
+- `npm test` - Run tests
+
+### Debugging
+
+1. **Redux DevTools**: Enable for state inspection
+2. **Flipper**: Use for network and Redux debugging
+3. **Metro Logs**: Check terminal for bundler issues
+
+### Common Issues
+
+1. **Metro Cache**: Clear with `npm start -- --reset-cache`
+2. **iOS Build**: Clean with `cd ios && xcodebuild clean && cd ..`
+3. **Android Build**: Clean with `cd android && ./gradlew clean && cd ..`
+
+## Key Learning Points
+
+### Redux Concepts Demonstrated
+- **Store Configuration** with Redux Toolkit
+- **Slice Pattern** for organizing state
+- **Async Thunks** for API calls
+- **Immutable Updates** with Immer
+- **Component Integration** with hooks
+
+### React Native Integration
+- **Navigation Setup** with Stack Navigator
+- **Native Module Linking** for dependencies
+- **Metro Configuration** for asset handling
+- **Provider Pattern** for state access
+
+## Troubleshooting
+
+### White Screen Issue
+Ensure proper navigation setup in `App.js`:
+```javascript
+<Provider store={store}>
+  <NavigationContainer>
+    <Stack.Navigator>
+      {/* Your screens */}
+    </Stack.Navigator>
+  </NavigationContainer>
+</Provider>
 ```
 
-Then, and every time you update your native dependencies, run:
+### Asset Resolution
+Create `assets/` directory for local images or use remote URLs.
 
-```sh
-bundle exec pod install
+### Native Module Errors
+Reinstall and relink dependencies:
+```bash
+npm install
+cd ios && pod install && cd ..
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## Contributing
 
-```sh
-# Using npm
-npm run ios
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
 
-# OR using Yarn
-yarn ios
-```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Acknowledgments
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+- React Native team for the framework
+- Redux team for state management tools
+- React Navigation team for navigation library
 
-## Step 3: Modify your app
+---
 
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+**Note**: This is a learning project demonstrating Redux concepts in React Native. For production apps, consider additional features like error boundaries, loading states, and comprehensive testing.
